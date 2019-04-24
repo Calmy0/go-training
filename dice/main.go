@@ -14,22 +14,13 @@ func main() {
 	sums := make([]int, 13)     // 0..12
 	percents := make([]int, 13) // 0..12
 
-	total := 0
-
-	var dice1, dice2 int
-
 	for i := 0; i < n; i++ {
-		dice1 = m.Intn(6)
-		dice2 = m.Intn(6)
-		sums[dice1+dice2+2]++
+		sums[m.Intn(6)+m.Intn(6)+2]++ // 0..5 + 0..5 +2
 	}
 
-	for i := 2; i < 13; i++ {
-		total += sums[i]
-	}
 	for i := 2; i < 13; i++ {
 		index[i] = i
-		percents[i] = sums[i] * 100 / total
+		percents[i] = sums[i] * 100 / n
 	}
 	output.PrintRow(index[2:])
 	output.PrintRow(sums[2:])
