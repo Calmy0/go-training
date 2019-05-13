@@ -2,19 +2,17 @@ package main
 
 import (
 	"fmt";
-	"collection/listpack";
+	"collection/list";
 )
 
 
 func main() {
-	c := listpack.New();
+	c := list.New();
 
 	c.Print()
-	print("\n")
 
 	fmt.Println(c.Remove(4))
 	c.Print()
-	print("\n")
 
 	fmt.Println(c.Get(3))
 	fmt.Println(c.First())
@@ -27,17 +25,18 @@ func main() {
 	}
 
 	c.Print()
-	print("\n")
 
 	fmt.Println(c.Remove(4))
 	c.Print()
-	print("\n")
 
 	fmt.Println(c.Get(3))
 	fmt.Println(c.First())
 	fmt.Println(c.Last())
 	fmt.Println(c.Length())
 
-	_, b:= c.Get(3)
+	b, _:= c.Get(0)
 	fmt.Println(b.Value())
+
+	b = b.Prev()
+	fmt.Println(b)
 }
