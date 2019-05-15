@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"bot-agent/bot"
+	"bot-agent/bots"
 )
 
 func main() {
@@ -18,24 +18,26 @@ func main() {
 		return;
 	}
 
-	b := bot.CreateBot(input)
+	b := bots.CreateBot(input)
 	if b == nil {
 		print("Wrong choice. Next time try another\n");
 		return;
 	}
 
-	b.SayHello()
+	fmt.Println(b.SayHello())
 	ListenAndResponse(b)
 }
 
-func ListenAndResponse (b bot.Boter) {
+func ListenAndResponse (b bots.Boter) {
 	ExitFlag := 0
+	response :=""
 	input := ""
 
 	for ; ExitFlag == 0; {
 		_, err := fmt.Scanln(&input)
 		if err != nil { print("Error while reading.\n"); continue;}
 
-		ExitFlag = b.Response(input)
+		response, ExitFlag = b.Response(input)
+		fmt.Println(response)
 	}
 }
